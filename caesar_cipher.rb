@@ -15,27 +15,32 @@ rotation = gets.chomp.to_i
 
 def caesar_cipher (text, rotation)
 	
-	text_to_numbers = [] #Array for the order letter of the text
-	numbers_to_text = [] #Cipher array
+	cipher_text = [] #Array for cipher text
 
-puts "Original text: #{text}"
+	puts "Original text: #{text}"
 
-	text.length.times do |num|
-		order = text[num].ord
-		if order >= 97 and order <= 122
-			text_to_numbers[num] = ((order-97+rotation)%26)+97
-			text_to_numbers[num] = text_to_numbers[num].chr
-		elsif order >= 65 and order <= 90
-			text_to_numbers[num] = ((order-65+rotation)%26)+65
-			text_to_numbers[num] = text_to_numbers[num].chr
-		else
-			text_to_numbers[num] = text[num]
+		text.length.times do |num|
+
+			order = text[num].ord
+
+			if order >= 97 and order <= 122
+				cipher_text[num] = ((order-97+rotation)%26)+97
+				cipher_text[num] = cipher_text[num].chr
+
+			elsif order >= 65 and order <= 90
+				cipher_text = ((order-65+rotation)%26)+65
+				cipher_text[num] = cipher_text[num].chr
+
+			else
+				cipher_text[num] = text[num]
+
+			end
 
 		end
-	end
-output = text_to_numbers.join
-puts "Cipher text : #{output}"
-		
+
+	output = cipher_text.join
+	puts "Cipher text : #{output}"
+	
 end
 
 caesar_cipher(text, rotation)
